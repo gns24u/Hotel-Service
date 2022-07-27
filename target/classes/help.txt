@@ -1,0 +1,15 @@
+request:
+http://localhost:8081/menu    -->get/post all the resuest
+http://localhost:8081/menu/1  --->getById
+
+
+
+
+Swager:
+http://localhost:8081/swagger-ui/#/menu-controller/saveMenuUsingPOST
+
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-boot-starter</artifactId>
+    <version>3.0.0</version>
+</dependency>
