@@ -29,7 +29,7 @@ public class MenuService {
 		try {
 
 			list = repo.findAll();
-			log.info("All menu list featched successfully ");
+			log.info("All menu list will featch .... ");
 			if (list.size() <= 0) {
 				log.error("Failed to find the requested menu");
 				throw new MyException(" There is no menu found , please try the correct way");
