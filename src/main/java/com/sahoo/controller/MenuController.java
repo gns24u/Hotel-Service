@@ -35,11 +35,11 @@ public class MenuController {
 
 	@PostMapping("/")
 	public ResponseEntity<Menu> saveMenu(@RequestBody Menu menu) {
-
+		log.info("Menu is submiting ");
 		try {
 			if (menu.getMenuName().length() == 0 || menu.getCustomerName().length() == 0 || menu.getMenuPrice() <= 0
 					|| menu.getServiceType().length() == 0) {
-				log.info("inside saveMenu(), You are giving wrong input , please look into");
+				log.warn("inside saveMenu(), You are giving wrong input , please look into your Menu details");
 				return (ResponseEntity<Menu>) new ResponseEntity("Hi You are giving wrong input , please look into it",
 						HttpStatus.BAD_REQUEST);
 			}
@@ -59,8 +59,9 @@ public class MenuController {
 		List<Menu> list = null;
 		try {
 			list = service.getAllMenu();
+			log.info("Retriving all the Menu");
 			if (list.size() <= 0) {
-				log.info("inside getMenus(), You are giving wrong input , please look into");
+				log.warn("There is No privious menu has processed , please proceed for new Menu");
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
 			}
@@ -80,9 +81,9 @@ public class MenuController {
 		Optional<Menu> menu = null;
 		try {
 			menu = service.getMenuById(menuId);
-
+			log.info("You are featching menu by featching MenuID =" + menuId);
 			if (menu == null) {
-				log.info("inside getMenuById(),You are giving wrong input , please look into");
+				log.warn("inside getMenuById(),You are giving wrong MenuId , please correct it");
 
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
